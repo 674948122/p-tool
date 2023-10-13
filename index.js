@@ -9,6 +9,7 @@ import hexToDecimal from "./src/hexToDecimal.js";
 import decimalToHex from "./src/decimalToHex.js";
 import getHexLength from "./src/getHexLength.js";
 import reverseHex from "./src/reverseHex.js";
+import { executor } from "./src/promiseExecutor.js";
 
 export {
     arrayToHex,
@@ -21,5 +22,6 @@ export {
     hexToDecimal,
     decimalToHex,
     getHexLength,
-    reverseHex
+    reverseHex,
+    executor,
 };
