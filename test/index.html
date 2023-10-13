@@ -6,11 +6,30 @@
         <title>p-tool test page</title>
     </head>
     <body>
+        <h1>工具函数测试页</h1>
+
+        <h3>函数列表</h3>
+
+        <ul>
+            <li>arrayToHex - 数组转16进制字符串</li>
+            <li>arrayToUtf8 - 数组转普通字符串</li>
+            <li>hexToArray - 16进制字符串转数组</li>
+            <li>leftPad - 字符串左侧补位0</li>
+            <li>parseArrayBufferToHex - 二进制转16进制字符串</li>
+            <li>parseHexToArrayBuffer - 16进制字符串转二进制</li>
+            <li>parseUtf8StringToHex - 普通字符串转16进制字符串</li>
+            <li>hexToDecimal - 16进制字符串转10进制数字</li>
+            <li>decimalToHex - 10进制数字转16进制字符串</li>
+            <li>getHexLength - 获取16进制字符串字节数</li>
+            <li>reverseHex - 16进制字符串反转</li>
+            <li>executor - Promise函数执行器</li>
+        </ul>
+
         <script type="importmap">
             {
                 "imports": {
-                    "p-tool": "./index.js",
-                    "@/": "./src/"
+                    "p-tool": "../index.js",
+                    "@/": "../src/"
                 }
             }
         </script>
@@ -85,8 +104,8 @@
                 return new Promise((resolve, reject) => {
                     setTimeout(() => {
                         if (params.id == 2) {
-                            reject()
-                            return
+                            reject();
+                            return;
                         }
                         resolve({
                             name: "张三",
