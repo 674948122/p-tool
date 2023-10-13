@@ -2,9 +2,10 @@
   "name": "pdg-tool",
   "version": "1.0.2",
   "description": "pdg工具包",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup --config"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/674948122/p-tool/issues"
   },
-  "homepage": "https://github.com/674948122/p-tool#readme"
+  "homepage": "https://github.com/674948122/p-tool#readme",
+  "volta": {
+    "node": "16.20.2",
+    "yarn": "1.22.19"
+  },
+  "devDependencies": {
+    "rollup": "^4.0.2"
+  }
 }
