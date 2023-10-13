@@ -1,5 +1,5 @@
 {
-  "name": "p-tool",
+  "name": "pdg-tool",
   "version": "1.0.0",
   "description": "pdg工具包",
   "main": "index.js",
