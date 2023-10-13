@@ -1,7 +1,7 @@
 {
   "name": "p-tool",
   "version": "1.0.0",
-  "description": "",
+  "description": "pdg工具包",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/674948122/p-tool.git"
   },
-  "author": "",
+  "author": "pandegong",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/674948122/p-tool/issues"
