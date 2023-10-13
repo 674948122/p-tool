@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>p-tool test page</title>
+    </head>
+    <body>
+        <script type="importmap">
+            {
+                "imports": {
+                    "p-tool": "./index.js",
+                    "@/": "./src/"
+                }
+            }
+        </script>
+        <script type="module">
+            import {
+                arrayToHex,
+                arrayToUtf8,
+                hexToArray,
+                leftPad,
+                parseArrayBufferToHex,
+                parseHexToArrayBuffer,
+                parseUtf8StringToHex,
+                hexToDecimal,
+                decimalToHex,
+                getHexLength,
+                reverseHex
+            } from "p-tool";
+
+            let utf8Str = 'hello你好'
+
+            console.log('普通字符串', utf8Str)
+
+            utf8Str = leftPad(utf8Str, 10)
+
+            console.log('左边补齐10位', utf8Str)
+
+            const hexStr = parseUtf8StringToHex(utf8Str)
+
+            console.log('普通字符串转hex字符串', hexStr)
+            
+            const arr = hexToArray(hexStr)
+
+            console.log('hex字符串转数组', arr)
+
+            const utf8Str2 = arrayToUtf8(arr)
+
+            console.log('数组转普通字符串', utf8Str2)
+
+            const hexStr2 = arrayToHex(arr)
+
+            console.log('数组转hex字符串', hexStr2)
+
+            const ab = parseHexToArrayBuffer(hexStr2)
+
+            console.log('hex字符串转二进制', ab)
+
+            const hexStr3 = parseArrayBufferToHex(ab)
+
+            console.log('二进制转hex字符串', hexStr3)
+
+            const dec = hexToDecimal('0x123')
+
+            console.log('hex字符串转十进制', dec)
+
+            const hexStr4 = decimalToHex(5)
+
+            console.log('十进制转hex字符串', hexStr4)
+
+            const len = getHexLength('30303068656c6c6fe4bda0e5a5bd')
+
+            console.log('hex字符串长度', len)
+
+            const hexStr5 = reverseHex('30303068656c6c6fe4bda0e5a5bd')
+
+            console.log('调整16进制字符串的字节顺序， 低位在前，高位在后', hexStr5)
+            
+        </script>
+    </body>
+</html>
