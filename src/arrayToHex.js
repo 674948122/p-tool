@@ -1,7 +1,7 @@
 /**
  * @name: 数组转16进制字符串
- * @param {*} t 需要转换的数组
- * @return {*} 16进制字符串
+ * @param {Array} t 需要转换的数组
+ * @return {String} 16进制字符串
  * @example: arrayToHex([1, 2, 3, 4]) => "01020304"
  */
 function arrayToHex(t) {

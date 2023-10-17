@@ -1,7 +1,7 @@
 /**
  * @name: 16进制字符串转10进制数字
- * @param {*} hexString 16进制字符串
- * @return {*} 10进制数字
+ * @param {String} hexString 16进制字符串
+ * @return {Number} 10进制数字
  * @example: hexToDecimal("01020304") => 16909060
  */
 function hexToDecimal(hexString) {

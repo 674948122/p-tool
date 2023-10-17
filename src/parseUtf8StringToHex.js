@@ -1,8 +1,8 @@
 
 /**
  * @name: 普通字符串转16进制字符串
- * @param {*} t 需要转换的字符串
- * @return {*} 16进制字符串
+ * @param {String} t 需要转换的字符串
+ * @return {String} 16进制字符串
  * @example: parseUtf8StringToHex("你好hello") => "e4bda0e5a5bd68656c6c6f"
  */
 function parseUtf8StringToHex(t) {

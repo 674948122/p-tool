@@ -6,7 +6,8 @@
   "type": "module",
   "module": "dist/index.esm.js",
   "scripts": {
-    "build": "rollup --config"
+    "build": "rollup --config",
+    "doc": "jsdoc -r src -d doc"
   },
   "files": [
     "dist"
@@ -27,5 +28,8 @@
   },
   "devDependencies": {
     "rollup": "^4.0.2"
+  },
+  "dependencies": {
+    "jsdoc": "^4.0.2"
   }
 }
