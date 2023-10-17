@@ -1,6 +1,6 @@
 {
   "name": "pdg-tool",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "pdg工具包",
   "main": "dist/index.esm.js",
   "type": "module",
@@ -8,6 +8,9 @@
   "scripts": {
     "build": "rollup --config"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/674948122/p-tool.git"
