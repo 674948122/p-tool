@@ -1,7 +1,8 @@
 /**
  * @name: 并发任务执行器
- * @return {*}
- * @example:
+ * @param {Number} paralleCount 并发任务数量
+ * @return {SuperTask{}} 返回一个SuperTask实例
+ * @example
  * function getUserinfo(params) {
  *     return new Promise((resolve, reject) => {
  *        setTimeout(() => {
