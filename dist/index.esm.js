@@ -186,7 +186,7 @@ function performChunk(datas, consumer) {
 
     if (!datas.length) return;
 
-    console.log(datas);
+    // console.log(datas);
     let i = 0; // 记录当前处理的索引
     // 执行一块任务
     function _run() {
