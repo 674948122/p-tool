@@ -1,9 +1,10 @@
 {
   "name": "pdg-tool",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "pdg工具包",
-  "main": "dist/index.js",
+  "main": "dist/index.esm.js",
   "type": "module",
+  "module": "dist/index.esm.js",
   "scripts": {
     "build": "rollup --config"
   },
