@@ -9,6 +9,8 @@ import hexToDecimal from "./hexToDecimal.js";
 import decimalToHex from "./decimalToHex.js";
 import getHexLength from "./getHexLength.js";
 import reverseHex from "./reverseHex.js";
+import performChunk from "./performChunk.js";
+import paralleTasks from "./paralleTasks.js";
 import { executor } from "./promiseExecutor.js";
 
 export {
@@ -23,5 +25,7 @@ export {
     decimalToHex,
     getHexLength,
     reverseHex,
+    performChunk,
+    paralleTasks,
     executor,
 };
