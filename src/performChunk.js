@@ -1,6 +1,6 @@
 /**
  * @name: 分时函数
- * @param {Array||Number} datas 需要处理的数据，可以是数组，也可以是数字
+ * @param {Array|Number} datas 需要处理的数据，可以是数组，也可以是数字
  * @param {Function} consumer 消费者函数，对数据的处理逻辑
  * @return {void}
  * @example

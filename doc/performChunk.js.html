@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: reverseHex.js</title>
+    <title>JSDoc: Source: performChunk.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: reverseHex.js</h1>
+    <h1 class="page-title">Source: performChunk.js</h1>
 
     
 
@@ -27,22 +27,48 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @name: 调整16进制字符串的字节顺序， 低位在前，高位在后
- * @param {String} hex 16进制字符串
- * @return {String} 调整后的16进制字符串
+ * @name: 分时函数
+ * @param {Array|Number} datas 需要处理的数据，可以是数组，也可以是数字
+ * @param {Function} consumer 消费者函数，对数据的处理逻辑
+ * @return {void}
  * @example
- * reverseHex("01020304") => "04030201"
+ * // 1. 传入数组
+ * performChunk([1, 2, 3, 4], (item, i) => {
+ *    console.log(item, i);
+ * }
+ * // 2. 传入数字
+ * performChunk(10, (item, i) => {
+ *   console.log(item, i);
+ * }
  */
-function reverseHex(hex) {
-    if (!hex || hex.length % 2 !== 0) {
-        return hex;
+function performChunk(datas, consumer) {
+    // 参数归一化，兼容数字和数组
+    if (typeof datas === "number") {
+        datas = new Array(datas);
     }
-    const arr = hex.match(/.{2}/g);
-    arr.reverse();
-    return arr.join("");
+
+    if (!datas.length) return;
+
+    // console.log(datas);
+    let i = 0; // 记录当前处理的索引
+    // 执行一块任务
+    function _run() {
+        if (i === datas.length) return;
+        requestIdleCallback((idle) => {
+            // 浏览器还有空闲时间
+            while (idle.timeRemaining() > 0 &amp;&amp; i &lt; datas.length) {
+                // 提取出当前要执行的任务
+                const item = datas[i];
+                consumer &amp;&amp; consumer(item, i);
+                i++;
+            }
+            _run();
+        });
+    }
+    _run();
 }
 
-export default reverseHex;
+export default performChunk;
 </code></pre>
         </article>
     </section>

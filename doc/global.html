@@ -201,7 +201,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="arrayToHex.js.html">arrayToHex.js</a>, <a href="arrayToHex.js.html#line7">line 7</a>
+        <a href="arrayToHex.js.html">arrayToHex.js</a>, <a href="arrayToHex.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -250,6 +250,13 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">数组转16进制字符串</p>
+    
+    <pre class="prettyprint"><code>arrayToHex([1, 2, 3, 4]) => "01020304"</code></pre>
 
 
 
@@ -356,7 +363,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="arrayToUtf8.js.html">arrayToUtf8.js</a>, <a href="arrayToUtf8.js.html#line7">line 7</a>
+        <a href="arrayToUtf8.js.html">arrayToUtf8.js</a>, <a href="arrayToUtf8.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -405,6 +412,11 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>arrayToUtf8([1, 2, 3, 4]) => "1234"</code></pre>
 
 
 
@@ -546,7 +558,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="decimalToHex.js.html">decimalToHex.js</a>, <a href="decimalToHex.js.html#line9">line 9</a>
+        <a href="decimalToHex.js.html">decimalToHex.js</a>, <a href="decimalToHex.js.html#line10">line 10</a>
     </li></ul></dd>
     
 
@@ -595,6 +607,11 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>decimalToHex(16909060) => "01020304"</code></pre>
 
 
 
@@ -701,7 +718,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="getHexLength.js.html">getHexLength.js</a>, <a href="getHexLength.js.html#line7">line 7</a>
+        <a href="getHexLength.js.html">getHexLength.js</a>, <a href="getHexLength.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -750,6 +767,11 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>getHexLength("01020304") => 4</code></pre>
 
 
 
@@ -856,7 +878,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hexToArray.js.html">hexToArray.js</a>, <a href="hexToArray.js.html#line7">line 7</a>
+        <a href="hexToArray.js.html">hexToArray.js</a>, <a href="hexToArray.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -905,6 +927,11 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>hexToArray("01020304") => [1, 2, 3, 4]</code></pre>
 
 
 
@@ -1011,7 +1038,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="hexToDecimal.js.html">hexToDecimal.js</a>, <a href="hexToDecimal.js.html#line7">line 7</a>
+        <a href="hexToDecimal.js.html">hexToDecimal.js</a>, <a href="hexToDecimal.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -1060,6 +1087,11 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>hexToDecimal("01020304") => 16909060</code></pre>
 
 
 
@@ -1189,7 +1221,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="leftPad.js.html">leftPad.js</a>, <a href="leftPad.js.html#line8">line 8</a>
+        <a href="leftPad.js.html">leftPad.js</a>, <a href="leftPad.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -1238,6 +1270,224 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>leftPad("hello", 10) => "00000hello"</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="paralleTasks"><span class="type-signature"></span>paralleTasks<span class="signature">(tasks, paralleCount)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;function()></span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">需要处理的任务队列</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>paralleCount</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    2
+                
+                </td>
+            
+
+            <td class="description last">并发数，默认为2</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="paralleTasks.js.html">paralleTasks.js</a>, <a href="paralleTasks.js.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    返回一个Promise对象
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>async function mockAsync1() {
+     await new Promise((resolve, reject) => {
+         setTimeout(() => {
+             resolve();
+         }, 1000);
+     });
+     console.log("paralleTasks111");
+}
+async function mockAsync2() {
+     await new Promise((resolve, reject) => {
+         setTimeout(() => {
+             resolve();
+         }, 1000);
+     });
+     console.log("paralleTasks222");
+}
+paralleTasks([mockAsync1, mockAsync2], 1).then(() => {
+     console.log("执行完毕");
+});</code></pre>
 
 
 
@@ -1344,7 +1594,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="parseArrayBufferToHex.js.html">parseArrayBufferToHex.js</a>, <a href="parseArrayBufferToHex.js.html#line8">line 8</a>
+        <a href="parseArrayBufferToHex.js.html">parseArrayBufferToHex.js</a>, <a href="parseArrayBufferToHex.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -1393,6 +1643,11 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>parseArrayBufferToHex(new Uint8Array([1, 2, 3, 4])) => "01020304"</code></pre>
 
 
 
@@ -1499,7 +1754,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="parseHexToArrayBuffer.js.html">parseHexToArrayBuffer.js</a>, <a href="parseHexToArrayBuffer.js.html#line7">line 7</a>
+        <a href="parseHexToArrayBuffer.js.html">parseHexToArrayBuffer.js</a>, <a href="parseHexToArrayBuffer.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -1548,6 +1803,11 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>parseHexToArrayBuffer("01020304") => new Uint8Array([1, 2, 3, 4])</code></pre>
 
 
 
@@ -1654,7 +1914,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="parseUtf8StringToHex.js.html">parseUtf8StringToHex.js</a>, <a href="parseUtf8StringToHex.js.html#line8">line 8</a>
+        <a href="parseUtf8StringToHex.js.html">parseUtf8StringToHex.js</a>, <a href="parseUtf8StringToHex.js.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -1695,6 +1955,363 @@
     <dd>
         
 <span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>parseUtf8StringToHex("你好hello") => "e4bda0e5a5bd68656c6c6f"</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="performChunk"><span class="type-signature"></span>performChunk<span class="signature">(datas, consumer)</span><span class="type-signature"> &rarr; {void}</span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>datas</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+|
+
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">需要处理的数据，可以是数组，也可以是数字</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>consumer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">消费者函数，对数据的处理逻辑</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="performChunk.js.html">performChunk.js</a>, <a href="performChunk.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// 1. 传入数组
+performChunk([1, 2, 3, 4], (item, i) => {
+   console.log(item, i);
+}
+// 2. 传入数字
+performChunk(10, (item, i) => {
+  console.log(item, i);
+}</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="processTasks"><span class="type-signature"></span>processTasks<span class="signature">(&hellip;tasks)</span><span class="type-signature"> &rarr; {*}</span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last">任务队列,每个任务无参数、异步</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="processTasks.js.html">processTasks.js</a>, <a href="processTasks.js.html#line6">line 6</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">*</span>
 
 
     </dd>
@@ -1809,7 +2426,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="reverseHex.js.html">reverseHex.js</a>, <a href="reverseHex.js.html#line7">line 7</a>
+        <a href="reverseHex.js.html">reverseHex.js</a>, <a href="reverseHex.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -1860,6 +2477,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>reverseHex("01020304") => "04030201"</code></pre>
+
+
 
         
     
@@ -1877,13 +2499,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="FunctionExecutor.html">FunctionExecutor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#arrayToHex">arrayToHex</a></li><li><a href="global.html#arrayToUtf8">arrayToUtf8</a></li><li><a href="global.html#decimalToHex">decimalToHex</a></li><li><a href="global.html#getHexLength">getHexLength</a></li><li><a href="global.html#hexToArray">hexToArray</a></li><li><a href="global.html#hexToDecimal">hexToDecimal</a></li><li><a href="global.html#leftPad">leftPad</a></li><li><a href="global.html#parseArrayBufferToHex">parseArrayBufferToHex</a></li><li><a href="global.html#parseHexToArrayBuffer">parseHexToArrayBuffer</a></li><li><a href="global.html#parseUtf8StringToHex">parseUtf8StringToHex</a></li><li><a href="global.html#reverseHex">reverseHex</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="SuperTask.html">SuperTask</a></li></ul><h3>Global</h3><ul><li><a href="global.html#arrayToHex">arrayToHex</a></li><li><a href="global.html#arrayToUtf8">arrayToUtf8</a></li><li><a href="global.html#decimalToHex">decimalToHex</a></li><li><a href="global.html#getHexLength">getHexLength</a></li><li><a href="global.html#hexToArray">hexToArray</a></li><li><a href="global.html#hexToDecimal">hexToDecimal</a></li><li><a href="global.html#leftPad">leftPad</a></li><li><a href="global.html#paralleTasks">paralleTasks</a></li><li><a href="global.html#parseArrayBufferToHex">parseArrayBufferToHex</a></li><li><a href="global.html#parseHexToArrayBuffer">parseHexToArrayBuffer</a></li><li><a href="global.html#parseUtf8StringToHex">parseUtf8StringToHex</a></li><li><a href="global.html#performChunk">performChunk</a></li><li><a href="global.html#processTasks">processTasks</a></li><li><a href="global.html#reverseHex">reverseHex</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Oct 17 2023 13:56:17 GMT+0800 (中国标准时间)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Oct 17 2023 16:45:42 GMT+0800 (中国标准时间)
 </footer>
 
 <script> prettyPrint(); </script>

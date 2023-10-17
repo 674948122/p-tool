@@ -4,7 +4,8 @@ import leftPad from "./leftPad.js";
  * @param {Number} decimal 10进制数字
  * @param {Number} length 16进制字符串长度
  * @return {String} 16进制字符串
- * @example: decimalToHex(16909060) => "01020304"
+ * @example
+ * decimalToHex(16909060) => "01020304"
  */
 function decimalToHex(decimal, length = 4) {
     const num = parseInt(decimal, 10);

@@ -12,6 +12,7 @@ import reverseHex from "./reverseHex.js";
 import performChunk from "./performChunk.js";
 import paralleTasks from "./paralleTasks.js";
 import SuperTask from "./superTask.js";
+import processTasks from "./processTasks.js";
 
 export {
     arrayToHex,
@@ -28,4 +29,5 @@ export {
     performChunk,
     paralleTasks,
     SuperTask,
+    processTasks
 };

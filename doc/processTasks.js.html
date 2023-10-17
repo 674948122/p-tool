@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: reverseHex.js</title>
+    <title>JSDoc: Source: processTasks.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: reverseHex.js</h1>
+    <h1 class="page-title">Source: processTasks.js</h1>
 
     
 
@@ -27,22 +27,41 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @name: 调整16进制字符串的字节顺序， 低位在前，高位在后
- * @param {String} hex 16进制字符串
- * @return {String} 调整后的16进制字符串
- * @example
- * reverseHex("01020304") => "04030201"
+ * @name: 可暂停的任务队列
+ * @param {...Function} tasks 任务队列,每个任务无参数、异步
+ * @return {*}
  */
-function reverseHex(hex) {
-    if (!hex || hex.length % 2 !== 0) {
-        return hex;
-    }
-    const arr = hex.match(/.{2}/g);
-    arr.reverse();
-    return arr.join("");
+function processTasks(...tasks) {
+    let isRunning = false;
+    const result = [];
+    let i = 0; // 当前执行的任务索引
+    return {
+        start() {
+            return new Promise(async (resolve, reject) => {
+                if (isRunning) {
+                    return;
+                }
+                isRunning = true;
+                while (i &lt; tasks.length) {
+                    result.push(await tasks[i]());
+                    i++;
+                    // 如果暂停，跳出循环
+                    if (!isRunning) {
+                        return;
+                    }
+                }
+                // 所有任务执行完毕
+                isRunning = false;
+                resolve(result);
+            });
+        },
+        pause() {
+            isRunning = false;
+        },
+    };
 }
 
-export default reverseHex;
+export default processTasks;
 </code></pre>
         </article>
     </section>

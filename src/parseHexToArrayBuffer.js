@@ -2,7 +2,8 @@
  * @name: 16进制字符串转二进制数组
  * @param {String} hexString 16进制字符串
  * @return {Buffer} 二进制数组
- * @example: parseHexToArrayBuffer("01020304") => new Uint8Array([1, 2, 3, 4])
+ * @example
+ * parseHexToArrayBuffer("01020304") => new Uint8Array([1, 2, 3, 4])
  */
 function parseHexToArrayBuffer(hexString) {
     const hex = hexString.toLowerCase();

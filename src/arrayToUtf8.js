@@ -2,7 +2,8 @@
  * @name: 数组转普通字符串
  * @param {Array} t 需要转换的数组
  * @return {String} 普通字符串
- * @example: arrayToUtf8([1, 2, 3, 4]) => "1234"
+ * @example
+ * arrayToUtf8([1, 2, 3, 4]) => "1234"
  */
 function arrayToUtf8(t) {
     for (var e = [], r = 0, n = 0; n < 2 * t.length; n += 2)

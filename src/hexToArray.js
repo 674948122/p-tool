@@ -2,7 +2,8 @@
  * @name: 16进制字符串转数组
  * @param {String} t 需要转换的16进制字符串
  * @return {Array} 数组
- * @example: hexToArray("01020304") => [1, 2, 3, 4]
+ * @example
+ * hexToArray("01020304") => [1, 2, 3, 4]
  */
 function hexToArray(t) {
     var e = [],
