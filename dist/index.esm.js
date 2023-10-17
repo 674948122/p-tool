@@ -1,7 +1,7 @@
 /**
  * @name: 数组转16进制字符串
- * @param {*} t 需要转换的数组
- * @return {*} 16进制字符串
+ * @param {Array} t 需要转换的数组
+ * @return {String} 16进制字符串
  * @example: arrayToHex([1, 2, 3, 4]) => "01020304"
  */
 function arrayToHex(t) {
@@ -16,8 +16,8 @@ function arrayToHex(t) {
 
 /**
  * @name: 数组转普通字符串
- * @param {*} t 需要转换的数组
- * @return {*} 普通字符串
+ * @param {Array} t 需要转换的数组
+ * @return {String} 普通字符串
  * @example: arrayToUtf8([1, 2, 3, 4]) => "1234"
  */
 function arrayToUtf8(t) {
@@ -36,8 +36,8 @@ function arrayToUtf8(t) {
 
 /**
  * @name: 16进制字符串转数组
- * @param {*} t 需要转换的16进制字符串
- * @return {*} 数组
+ * @param {String} t 需要转换的16进制字符串
+ * @return {Array} 数组
  * @example: hexToArray("01020304") => [1, 2, 3, 4]
  */
 function hexToArray(t) {
@@ -50,9 +50,9 @@ function hexToArray(t) {
 
 /**
  * @name: 字符串左侧补位0
- * @param {*} t 需要补位的字符串
- * @param {*} e 补位后的长度
- * @return {*} 补位后的字符串
+ * @param {String} t 需要补位的字符串
+ * @param {Number} e 补位后的长度
+ * @return {String} 补位后的字符串
  * @example: leftPad("hello", 10) => "00000hello"
  */
 function leftPad(t, e) {
@@ -61,8 +61,8 @@ function leftPad(t, e) {
 
 /**
  * @name: 二进制数组转16进制字符串
- * @param {*} t 需要转换的二进制数组
- * @return {*} 16进制字符串
+ * @param {Uint8Array} t 需要转换的二进制数组
+ * @return {String} 16进制字符串
  * @example: parseArrayBufferToHex(new Uint8Array([1, 2, 3, 4])) => "01020304"
  */
 function parseArrayBufferToHex(t) {
@@ -75,7 +75,8 @@ function parseArrayBufferToHex(t) {
 
 /**
  * @name: 16进制字符串转二进制数组
- * @return {*} 二进制数组
+ * @param {String} hexString 16进制字符串
+ * @return {Buffer} 二进制数组
  * @example: parseHexToArrayBuffer("01020304") => new Uint8Array([1, 2, 3, 4])
  */
 function parseHexToArrayBuffer(hexString) {
@@ -92,8 +93,8 @@ function parseHexToArrayBuffer(hexString) {
 
 /**
  * @name: 普通字符串转16进制字符串
- * @param {*} t 需要转换的字符串
- * @return {*} 16进制字符串
+ * @param {String} t 需要转换的字符串
+ * @return {String} 16进制字符串
  * @example: parseUtf8StringToHex("你好hello") => "e4bda0e5a5bd68656c6c6f"
  */
 function parseUtf8StringToHex(t) {
@@ -112,8 +113,8 @@ function parseUtf8StringToHex(t) {
 
 /**
  * @name: 16进制字符串转10进制数字
- * @param {*} hexString 16进制字符串
- * @return {*} 10进制数字
+ * @param {String} hexString 16进制字符串
+ * @return {Number} 10进制数字
  * @example: hexToDecimal("01020304") => 16909060
  */
 function hexToDecimal(hexString) {
@@ -126,9 +127,9 @@ function hexToDecimal(hexString) {
 
 /**
  * @name: 10进制数字转16进制字符串
- * @param {*} decimal 10进制数字
- * @param {*} length 16进制字符串长度
- * @return {*} 16进制字符串
+ * @param {Number} decimal 10进制数字
+ * @param {Number} length 16进制字符串长度
+ * @return {String} 16进制字符串
  * @example: decimalToHex(16909060) => "01020304"
  */
 function decimalToHex(decimal, length = 4) {
@@ -139,8 +140,8 @@ function decimalToHex(decimal, length = 4) {
 
 /**
  * @name: 获取16进制字符串长度
- * @param {*} hex 16进制字符串
- * @return {*} 16进制字符串长度
+ * @param {String} hex 16进制字符串
+ * @return {Number} 16进制字符串长度
  * @example: getHexLength("01020304") => 4
  */
 function getHexLength(hex) {
@@ -149,8 +150,8 @@ function getHexLength(hex) {
 
 /**
  * @name: 调整16进制字符串的字节顺序， 低位在前，高位在后
- * @param {*} hex 16进制字符串
- * @return {*} 调整后的16进制字符串
+ * @param {String} hex 16进制字符串
+ * @return {String} 调整后的16进制字符串
  * @example: reverseHex("01020304") => "04030201"
  */
 function reverseHex(hex) {
@@ -163,33 +164,168 @@ function reverseHex(hex) {
 }
 
 /**
- * @name: Promise函数执行器，用于执行Promise函数，保证每次执行的结果按顺序返回，不会并行任务
- * @param {*} Promise Promise函数
- * @param {array} args 参数数组
- * @return {*} Promise对象
- * @example:
- * executor.execute(getUserinfo, { id: 123 }).then(res=>{}).catch(err=>{});
+ * @name: 分时函数
+ * @param {Array||Number} datas 需要处理的数据，可以是数组，也可以是数字
+ * @param {Function} consumer 消费者函数，对数据的处理逻辑
+ * @return {void}
+ * @example
+ * // 1. 传入数组
+ * performChunk([1, 2, 3, 4], (item, i) => {
+ *    console.log(item, i);
+ * }
+ * // 2. 传入数字
+ * performChunk(10, (item, i) => {
+ *   console.log(item, i);
+ * }
  */
-class FunctionExecutor {
-    constructor() {
-        this.previousExecution = Promise.resolve();
+function performChunk(datas, consumer) {
+    // 参数归一化，兼容数字和数组
+    if (typeof datas === "number") {
+        datas = new Array(datas);
     }
 
-    execute(func, ...args) {
-        const currentExecution = this.previousExecution
-            .then(() => {
-                return func(...args); // 将参数展开传递给函数调用
-            })
-            .catch(() => {
-                // 重置上一次执行的结果为 resolve
-                return Promise.resolve();
-            });
+    if (!datas.length) return;
 
-        this.previousExecution = currentExecution;
-        return currentExecution;
+    console.log(datas);
+    let i = 0; // 记录当前处理的索引
+    // 执行一块任务
+    function _run() {
+        if (i === datas.length) return;
+        requestIdleCallback((idle) => {
+            // 浏览器还有空闲时间
+            while (idle.timeRemaining() > 0 && i < datas.length) {
+                // 提取出当前要执行的任务
+                const item = datas[i];
+                consumer && consumer(item, i);
+                i++;
+            }
+            _run();
+        });
+    }
+    _run();
+}
+
+/**
+ * @name: 并发队列
+ * @param {Function[]} tasks 需要处理的任务队列
+ * @param {Number} paralleCount 并发数，默认为2
+ * @return {Promise} 返回一个Promise对象
+ * @example
+ * async function mockAsync1() {
+ *      await new Promise((resolve, reject) => {
+ *          setTimeout(() => {
+ *              resolve();
+ *          }, 1000);
+ *      });
+ *      console.log("paralleTasks111");
+ * }
+ * async function mockAsync2() {
+ *      await new Promise((resolve, reject) => {
+ *          setTimeout(() => {
+ *              resolve();
+ *          }, 1000);
+ *      });
+ *      console.log("paralleTasks222");
+ * }
+ * paralleTasks([mockAsync1, mockAsync2], 1).then(() => {
+ *      console.log("执行完毕");
+ * });
+ */
+function paralleTasks(tasks, paralleCount = 2) {
+    return new Promise((resolve) => {
+        if (tasks.length === 0) {
+            resolve();
+            return;
+        }
+        let nextIndex = 0; // 记录当前执行的索引
+        let finshCount = 0; // 记录已经完成的任务数
+        function _run() {
+            // 从任务队列中取出一个任务
+            const task = tasks[nextIndex];
+            nextIndex++;
+            // console.log("开始执行任务", task);
+            task().then(() => {
+                finshCount++;
+                // 任务执行完毕，继续执行下一个任务
+                if (nextIndex < tasks.length) {
+                    _run();
+                } else if (finshCount === tasks.length) {
+                    // 所有任务执行完毕，返回
+                    resolve();
+                }
+            });
+        }
+        for (let i = 0; i < paralleCount && i < tasks.length; i++) {
+            _run();
+        }
+    });
+}
+
+/**
+ * @name: 并发任务执行器
+ * @return {*}
+ * @example:
+ * function getUserinfo(params) {
+ *     return new Promise((resolve, reject) => {
+ *        setTimeout(() => {
+ *            if (params.id == 2) {
+ *                reject();
+ *                return;
+ *            }
+ *            resolve({
+ *                name: "张三",
+ *                age: 18,
+ *               ...params,
+ *            });
+ *        }, 2000);
+ *    });
+ * }
+ * const superTask = new SuperTask(1);
+ * superTask
+ *     .add(() => {
+ *         return getUserinfo({ id: 1 });
+ *     })
+ *     .then(() => {
+ *        console.log(111);
+ *     });
+ * superTask
+ *     .add(() => {
+ *         return getUserinfo({ id: 1 });
+ *     })
+ *     .then(() => {
+ *         console.log(222);
+ *     });
+ */
+class SuperTask {
+    constructor(paralleCount = 2) {
+        this.paralleCount = paralleCount; // 并发任务数量
+        this.tasks = []; // 任务队列
+        this.runingCount = 0; // 正在执行的任务数量
+    }
+    // 添加任务
+    add(task) {
+        return new Promise((resolve, reject) => {
+            this.tasks.push({
+                task,
+                resolve,
+                reject,
+            });
+            this._run();
+        });
+    }
+    // 执行任务
+    _run() {
+        while (this.runingCount < this.paralleCount && this.tasks.length > 0) {
+            const { task, resolve, reject } = this.tasks.shift();
+            this.runingCount++;
+            task()
+                .then(resolve, reject)
+                .finally(() => {
+                    this.runingCount--;
+                    this._run();
+                });
+        }
     }
 }
 
-const executor = new FunctionExecutor();
-
-export { arrayToHex, arrayToUtf8, decimalToHex, executor, getHexLength, hexToArray, hexToDecimal, leftPad, parseArrayBufferToHex, parseHexToArrayBuffer, parseUtf8StringToHex, reverseHex };
+export { SuperTask, arrayToHex, arrayToUtf8, decimalToHex, getHexLength, hexToArray, hexToDecimal, leftPad, paralleTasks, parseArrayBufferToHex, parseHexToArrayBuffer, parseUtf8StringToHex, performChunk, reverseHex };

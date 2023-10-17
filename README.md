@@ -15,7 +15,9 @@
 - decimalToHex - 10进制数字转16进制字符串
 - getHexLength - 获取16进制字符串字节数
 - reverseHex - 16进制字符串反转
-- executor - Promise函数执行器
+- SuperTask - 并发任务执行器
+- paralleTasks - 并发队列
+- performChunk - 分时函数
 
 ### 用法示例
 
@@ -32,7 +34,9 @@ import {
     decimalToHex,
     getHexLength,
     reverseHex,
-    executor,
+    SuperTask,
+    paralleTasks,
+    performChunk,
 } from "pdg-tool";
 
 let utf8Str = "hello你好";
@@ -85,7 +89,6 @@ console.log(
     "调整16进制字符串的字节顺序， 低位在前，高位在后",
     hexStr5
 );
-
 function getUserinfo(params) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -101,23 +104,46 @@ function getUserinfo(params) {
         }, 2000);
     });
 }
+const superTask = new SuperTask(1);
 
-executor
-    .execute(getUserinfo, { id: 1 })
-    .then((res) => {
-        console.log("executor1", res);
+superTask
+    .add(() => {
+        return getUserinfo({ id: 1 });
     })
-    .catch((err) => {});
-executor
-    .execute(getUserinfo, { id: 2 })
-    .then((res) => {
-        console.log("executor2", res);
+    .then(() => {
+        console.log("SuperTask111");
+    });
+superTask
+    .add(() => {
+        return getUserinfo({ id: 1 });
     })
-    .catch((err) => {});
-executor
-    .execute(getUserinfo, { id: 3 })
-    .then((res) => {
-        console.log("executor3", res);
-    })
-    .catch((err) => {});
+    .then(() => {
+        console.log("SuperTask222");
+    });
+
+async function mockAsync1() {
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, 1000);
+    });
+    console.log("paralleTasks111");
+}
+async function mockAsync2() {
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, 1000);
+    });
+    console.log("paralleTasks222");
+}
+
+paralleTasks([mockAsync1, mockAsync2], 1).then(() => {
+    console.log("执行完毕");
+});
+
+performChunk(100, (item, index) => {
+    console.log(item, index);
+});
+
 ```

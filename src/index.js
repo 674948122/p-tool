@@ -11,7 +11,7 @@ import getHexLength from "./getHexLength.js";
 import reverseHex from "./reverseHex.js";
 import performChunk from "./performChunk.js";
 import paralleTasks from "./paralleTasks.js";
-import { executor } from "./promiseExecutor.js";
+import SuperTask from "./superTask.js";
 
 export {
     arrayToHex,
@@ -27,5 +27,5 @@ export {
     reverseHex,
     performChunk,
     paralleTasks,
-    executor,
+    SuperTask,
 };

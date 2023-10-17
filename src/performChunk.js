@@ -1,6 +1,6 @@
 /**
  * @name: 分时函数
- * @param {Array|Number} datas 需要处理的数据，可以是数组，也可以是数字
+ * @param {Array||Number} datas 需要处理的数据，可以是数组，也可以是数字
  * @param {Function} consumer 消费者函数，对数据的处理逻辑
  * @return {void}
  * @example
@@ -18,7 +18,10 @@ function performChunk(datas, consumer) {
     if (typeof datas === "number") {
         datas = new Array(datas);
     }
+
     if (!datas.length) return;
+
+    // console.log(datas);
     let i = 0; // 记录当前处理的索引
     // 执行一块任务
     function _run() {
