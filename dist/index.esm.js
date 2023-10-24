@@ -2,7 +2,8 @@
  * @name: 数组转16进制字符串
  * @param {Array} t 需要转换的数组
  * @return {String} 16进制字符串
- * @example: arrayToHex([1, 2, 3, 4]) => "01020304"
+ * @example <caption>数组转16进制字符串</caption>
+ * arrayToHex([1, 2, 3, 4]) => "01020304"
  */
 function arrayToHex(t) {
     for (var e = [], r = 0, n = 0; n < 2 * t.length; n += 2)
@@ -11,14 +12,15 @@ function arrayToHex(t) {
         var s = (e[o >>> 2] >>> (24 - (o % 4) * 8)) & 255;
         i.push((s >>> 4).toString(16)), i.push((15 & s).toString(16));
     }
-    return i.join("");
+    return i.join("").toUpperCase();
 }
 
 /**
  * @name: 数组转普通字符串
  * @param {Array} t 需要转换的数组
  * @return {String} 普通字符串
- * @example: arrayToUtf8([1, 2, 3, 4]) => "1234"
+ * @example
+ * arrayToUtf8([1, 2, 3, 4]) => "1234"
  */
 function arrayToUtf8(t) {
     for (var e = [], r = 0, n = 0; n < 2 * t.length; n += 2)
@@ -38,7 +40,8 @@ function arrayToUtf8(t) {
  * @name: 16进制字符串转数组
  * @param {String} t 需要转换的16进制字符串
  * @return {Array} 数组
- * @example: hexToArray("01020304") => [1, 2, 3, 4]
+ * @example
+ * hexToArray("01020304") => [1, 2, 3, 4]
  */
 function hexToArray(t) {
     var e = [],
@@ -53,7 +56,8 @@ function hexToArray(t) {
  * @param {String} t 需要补位的字符串
  * @param {Number} e 补位后的长度
  * @return {String} 补位后的字符串
- * @example: leftPad("hello", 10) => "00000hello"
+ * @example
+ * leftPad("hello", 10) => "00000hello"
  */
 function leftPad(t, e) {
     return t.length >= e ? t : new Array(e - t.length + 1).join("0") + t;
@@ -63,21 +67,23 @@ function leftPad(t, e) {
  * @name: 二进制数组转16进制字符串
  * @param {Uint8Array} t 需要转换的二进制数组
  * @return {String} 16进制字符串
- * @example: parseArrayBufferToHex(new Uint8Array([1, 2, 3, 4])) => "01020304"
+ * @example
+ * parseArrayBufferToHex(new Uint8Array([1, 2, 3, 4])) => "01020304"
  */
 function parseArrayBufferToHex(t) {
     return Array.prototype.map
         .call(new Uint8Array(t), function (t) {
             return ("00" + t.toString(16)).slice(-2);
         })
-        .join("");
+        .join("").toUpperCase();
 }
 
 /**
  * @name: 16进制字符串转二进制数组
  * @param {String} hexString 16进制字符串
  * @return {Buffer} 二进制数组
- * @example: parseHexToArrayBuffer("01020304") => new Uint8Array([1, 2, 3, 4])
+ * @example
+ * parseHexToArrayBuffer("01020304") => new Uint8Array([1, 2, 3, 4])
  */
 function parseHexToArrayBuffer(hexString) {
     const hex = hexString.toLowerCase();
@@ -95,7 +101,8 @@ function parseHexToArrayBuffer(hexString) {
  * @name: 普通字符串转16进制字符串
  * @param {String} t 需要转换的字符串
  * @return {String} 16进制字符串
- * @example: parseUtf8StringToHex("你好hello") => "e4bda0e5a5bd68656c6c6f"
+ * @example
+ * parseUtf8StringToHex("你好hello") => "e4bda0e5a5bd68656c6c6f"
  */
 function parseUtf8StringToHex(t) {
     for (
@@ -108,14 +115,15 @@ function parseUtf8StringToHex(t) {
         var s = (r[o >>> 2] >>> (24 - (o % 4) * 8)) & 255;
         i.push((s >>> 4).toString(16)), i.push((15 & s).toString(16));
     }
-    return i.join("");
+    return i.join("").toUpperCase();
 }
 
 /**
  * @name: 16进制字符串转10进制数字
  * @param {String} hexString 16进制字符串
  * @return {Number} 10进制数字
- * @example: hexToDecimal("01020304") => 16909060
+ * @example
+ * hexToDecimal("01020304") => 16909060
  */
 function hexToDecimal(hexString) {
     // 将 16 进制字符串转换为对应的整数
@@ -130,7 +138,8 @@ function hexToDecimal(hexString) {
  * @param {Number} decimal 10进制数字
  * @param {Number} length 16进制字符串长度
  * @return {String} 16进制字符串
- * @example: decimalToHex(16909060) => "01020304"
+ * @example
+ * decimalToHex(16909060) => "01020304"
  */
 function decimalToHex(decimal, length = 4) {
     const num = parseInt(decimal, 10);
@@ -142,7 +151,8 @@ function decimalToHex(decimal, length = 4) {
  * @name: 获取16进制字符串长度
  * @param {String} hex 16进制字符串
  * @return {Number} 16进制字符串长度
- * @example: getHexLength("01020304") => 4
+ * @example
+ * getHexLength("01020304") => 4
  */
 function getHexLength(hex) {
     return hex.length / 2;
@@ -152,7 +162,8 @@ function getHexLength(hex) {
  * @name: 调整16进制字符串的字节顺序， 低位在前，高位在后
  * @param {String} hex 16进制字符串
  * @return {String} 调整后的16进制字符串
- * @example: reverseHex("01020304") => "04030201"
+ * @example
+ * reverseHex("01020304") => "04030201"
  */
 function reverseHex(hex) {
     if (!hex || hex.length % 2 !== 0) {
@@ -165,7 +176,7 @@ function reverseHex(hex) {
 
 /**
  * @name: 分时函数
- * @param {Array||Number} datas 需要处理的数据，可以是数组，也可以是数字
+ * @param {Array|Number} datas 需要处理的数据，可以是数组，也可以是数字
  * @param {Function} consumer 消费者函数，对数据的处理逻辑
  * @return {void}
  * @example
@@ -263,8 +274,9 @@ function paralleTasks(tasks, paralleCount = 2) {
 
 /**
  * @name: 并发任务执行器
- * @return {*}
- * @example:
+ * @param {Number} paralleCount 并发任务数量
+ * @return {SuperTask{}} 返回一个SuperTask实例
+ * @example
  * function getUserinfo(params) {
  *     return new Promise((resolve, reject) => {
  *        setTimeout(() => {
@@ -328,4 +340,39 @@ class SuperTask {
     }
 }
 
-export { SuperTask, arrayToHex, arrayToUtf8, decimalToHex, getHexLength, hexToArray, hexToDecimal, leftPad, paralleTasks, parseArrayBufferToHex, parseHexToArrayBuffer, parseUtf8StringToHex, performChunk, reverseHex };
+/**
+ * @name: 可暂停的任务队列
+ * @param {...Function} tasks 任务队列,每个任务无参数、异步
+ * @return {*}
+ */
+function processTasks(...tasks) {
+    let isRunning = false;
+    const result = [];
+    let i = 0; // 当前执行的任务索引
+    return {
+        start() {
+            return new Promise(async (resolve, reject) => {
+                if (isRunning) {
+                    return;
+                }
+                isRunning = true;
+                while (i < tasks.length) {
+                    result.push(await tasks[i]());
+                    i++;
+                    // 如果暂停，跳出循环
+                    if (!isRunning) {
+                        return;
+                    }
+                }
+                // 所有任务执行完毕
+                isRunning = false;
+                resolve(result);
+            });
+        },
+        pause() {
+            isRunning = false;
+        },
+    };
+}
+
+export { SuperTask, arrayToHex, arrayToUtf8, decimalToHex, getHexLength, hexToArray, hexToDecimal, leftPad, paralleTasks, parseArrayBufferToHex, parseHexToArrayBuffer, parseUtf8StringToHex, performChunk, processTasks, reverseHex };

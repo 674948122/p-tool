@@ -12,7 +12,7 @@ function arrayToHex(t) {
         var s = (e[o >>> 2] >>> (24 - (o % 4) * 8)) & 255;
         i.push((s >>> 4).toString(16)), i.push((15 & s).toString(16));
     }
-    return i.join("");
+    return i.join("").toUpperCase();
 }
 
 export default arrayToHex

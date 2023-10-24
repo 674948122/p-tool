@@ -11,7 +11,7 @@ function parseArrayBufferToHex(t) {
         .call(new Uint8Array(t), function (t) {
             return ("00" + t.toString(16)).slice(-2);
         })
-        .join("");
+        .join("").toUpperCase();
 }
 
 export default parseArrayBufferToHex

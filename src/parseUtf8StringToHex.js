@@ -17,7 +17,7 @@ function parseUtf8StringToHex(t) {
         var s = (r[o >>> 2] >>> (24 - (o % 4) * 8)) & 255;
         i.push((s >>> 4).toString(16)), i.push((15 & s).toString(16));
     }
-    return i.join("");
+    return i.join("").toUpperCase();
 }
 
 export default parseUtf8StringToHex;
