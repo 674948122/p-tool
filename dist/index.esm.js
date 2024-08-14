@@ -16,6 +16,16 @@ function arrayToHex(t) {
 }
 
 /**
+ * @name: 使用正则表达式过滤不可见字符
+ * @param {*} input 需要处理的字符串
+ * @return {*} 处理后的字符串
+ */
+function filterInvisibleCharsRegex(input) {
+  var pattern = /[\x00-\x1F\x7F]/g;
+  return input.replace(pattern, "");
+}
+
+/**
  * @name: 数组转普通字符串
  * @param {Array} t 需要转换的数组
  * @return {String} 普通字符串
@@ -30,7 +40,8 @@ function arrayToUtf8(t) {
             var s = (e[o >>> 2] >>> (24 - (o % 4) * 8)) & 255;
             i.push(String.fromCharCode(s));
         }
-        return decodeURIComponent(escape(i.join("")));
+        const str = decodeURIComponent(escape(i.join("")));
+        return filterInvisibleCharsRegex(str)
     } catch (t) {
         throw new Error("Malformed UTF-8 data");
     }
@@ -380,4 +391,4 @@ function processTasks(...tasks) {
     };
 }
 
-export { SuperTask, arrayToHex, arrayToUtf8, decimalToHex, getHexLength, hexToArray, hexToDecimal, leftPad, paralleTasks, parseArrayBufferToHex, parseHexToArrayBuffer, parseUtf8StringToHex, performChunk, processTasks, reverseHex };
+export { SuperTask, arrayToHex, arrayToUtf8, decimalToHex, filterInvisibleCharsRegex, getHexLength, hexToArray, hexToDecimal, leftPad, paralleTasks, parseArrayBufferToHex, parseHexToArrayBuffer, parseUtf8StringToHex, performChunk, processTasks, reverseHex };
