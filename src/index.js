@@ -13,6 +13,7 @@ import performChunk from "./performChunk.js";
 import paralleTasks from "./paralleTasks.js";
 import SuperTask from "./superTask.js";
 import processTasks from "./processTasks.js";
+import filterInvisibleCharsRegex from "./filterInvisibleCharsRegex.js";
 
 export {
     arrayToHex,
@@ -29,5 +30,6 @@ export {
     performChunk,
     paralleTasks,
     SuperTask,
-    processTasks
+    processTasks,
+    filterInvisibleCharsRegex
 };

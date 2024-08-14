@@ -338,6 +338,11 @@ class SuperTask {
                 });
         }
     }
+    // 重置任务
+    reset() {
+        this.tasks = [];
+        this.runingCount = 0;
+    }
 }
 
 /**

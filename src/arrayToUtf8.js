@@ -1,3 +1,5 @@
+import filterInvisibleCharsRegex from "./filterInvisibleCharsRegex.js";
+
 /**
  * @name: 数组转普通字符串
  * @param {Array} t 需要转换的数组
@@ -13,7 +15,8 @@ function arrayToUtf8(t) {
             var s = (e[o >>> 2] >>> (24 - (o % 4) * 8)) & 255;
             i.push(String.fromCharCode(s));
         }
-        return decodeURIComponent(escape(i.join("")));
+        const str = decodeURIComponent(escape(i.join("")));
+        return filterInvisibleCharsRegex(str)
     } catch (t) {
         throw new Error("Malformed UTF-8 data");
     }
