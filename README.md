@@ -18,6 +18,7 @@
 - SuperTask - 并发任务执行器
 - paralleTasks - 并发队列
 - performChunk - 分时函数
+- filterInvisibleCharsRegex - 过滤不可见字符
 
 ### 用法示例
 
