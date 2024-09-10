@@ -48,6 +48,9 @@
                 SuperTask,
                 paralleTasks,
                 performChunk,
+                useGenerateBrowserFingerprint,
+                getBrowserVersion,
+                compareVersion
             } from "pdg-tool";
 
             let utf8Str = "hello你好";
@@ -157,6 +160,17 @@
             // performChunk(100, (item, index) => {
             //     console.log(item, index);
             // });
+
+            const browserFingerprint = useGenerateBrowserFingerprint();
+            console.log("浏览器指纹", browserFingerprint);
+
+            const browserVersion = getBrowserVersion();
+            console.log("浏览器版本", browserVersion);
+
+            const minVersion = '87.0.0.0';
+
+            const result = compareVersion(browserVersion.version, minVersion);
+            console.log('浏览器版本是否满足要求', result);
         </script>
     </body>
 </html>
