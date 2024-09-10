@@ -14,6 +14,9 @@ import paralleTasks from "./paralleTasks.js";
 import SuperTask from "./superTask.js";
 import processTasks from "./processTasks.js";
 import filterInvisibleCharsRegex from "./filterInvisibleCharsRegex.js";
+import getBrowserVersion from "./getBrowserVersion.js";
+import compareVersion from "./compareVersion.js";
+import useGenerateBrowserFingerprint from "./useGenerateBrowserFingerprint.js";
 
 export {
     arrayToHex,
@@ -31,5 +34,8 @@ export {
     paralleTasks,
     SuperTask,
     processTasks,
-    filterInvisibleCharsRegex
+    filterInvisibleCharsRegex,
+    getBrowserVersion,
+    compareVersion,
+    useGenerateBrowserFingerprint
 };

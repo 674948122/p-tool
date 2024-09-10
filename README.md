@@ -19,6 +19,9 @@
 - paralleTasks - 并发队列
 - performChunk - 分时函数
 - filterInvisibleCharsRegex - 过滤不可见字符
+- getBrowserVersion - 获取浏览器内核名称及版本号
+- compareVersion - 比较两个版本号
+- useGenerateBrowserFingerprint - 生成浏览器指纹
 
 ### 用法示例
 

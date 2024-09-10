@@ -1,7 +1,7 @@
 /**
  * @name: 并发任务执行器
  * @param {Number} paralleCount 并发任务数量
- * @return {SuperTask{}} 返回一个SuperTask实例
+ * @return {Object} 返回一个SuperTask实例
  * @example
  * function getUserinfo(params) {
  *     return new Promise((resolve, reject) => {

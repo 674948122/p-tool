@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: parseUtf8StringToHex.js</title>
+    <title>JSDoc: Source: useGenerateBrowserFingerprint.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: parseUtf8StringToHex.js</h1>
+    <h1 class="page-title">Source: useGenerateBrowserFingerprint.js</h1>
 
     
 
@@ -26,29 +26,64 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
-/**
- * @name: 普通字符串转16进制字符串
- * @param {String} t 需要转换的字符串
- * @return {String} 16进制字符串
+            <pre class="prettyprint source linenums"><code>/**
+ * @name: 生成浏览器指纹
+ * @return {Number} 浏览器指纹
  * @example
- * parseUtf8StringToHex("你好hello") => "e4bda0e5a5bd68656c6c6f"
+ * const fingerprint = useGenerateBrowserFingerprint(); // 1690444253
  */
-function parseUtf8StringToHex(t) {
-    for (
-        var e = (t = unescape(encodeURIComponent(t))).length, r = [], n = 0;
-        n &lt; e;
-        n++
-    )
-        r[n >>> 2] |= (255 &amp; t.charCodeAt(n)) &lt;&lt; (24 - (n % 4) * 8);
-    for (var i = [], o = 0; o &lt; e; o++) {
-        var s = (r[o >>> 2] >>> (24 - (o % 4) * 8)) &amp; 255;
-        i.push((s >>> 4).toString(16)), i.push((15 &amp; s).toString(16));
-    }
-    return i.join("").toUpperCase();
-}
+const useGenerateBrowserFingerprint = () => {
+    var fingerprint = "";
 
-export default parseUtf8StringToHex;</code></pre>
+    // 检测浏览器的 User Agent
+    var userAgent = navigator.userAgent || "";
+    fingerprint += userAgent;
+
+    // 检测浏览器的语言
+    var language = navigator.language || "";
+    fingerprint += language;
+
+    // 检测浏览器的屏幕分辨率
+    var screenResolution = window.screen.width + "x" + window.screen.height;
+    fingerprint += screenResolution;
+
+    // 检测浏览器的时区
+    var timeZone = new Date().getTimezoneOffset();
+    fingerprint += timeZone;
+
+    // 检测浏览器的插件信息
+    var plugins = "";
+    if (navigator.plugins &amp;&amp; navigator.plugins.length > 0) {
+        for (var i = 0; i &lt; navigator.plugins.length; i++) {
+            plugins += navigator.plugins[i].name + ";";
+        }
+    }
+    fingerprint += plugins;
+
+    // 检测浏览器的字体信息
+    var fonts = "";
+    if (document.fonts &amp;&amp; document.fonts.length > 0) {
+        for (var j = 0; j &lt; document.fonts.length; j++) {
+            fonts += document.fonts[j].family + ";";
+        }
+    }
+    fingerprint += fonts;
+
+    // 使用哈希函数生成指纹
+    var hash = 0;
+    if (fingerprint.length === 0) return hash;
+    for (var k = 0; k &lt; fingerprint.length; k++) {
+        var char = fingerprint.charCodeAt(k);
+        hash = (hash &lt;&lt; 5) - hash + char;
+        hash = hash &amp; hash; // Convert to 32bit integer
+    }
+    // 取绝对值
+    hash = Math.abs(hash);
+    return hash;
+};
+
+export default useGenerateBrowserFingerprint;
+</code></pre>
         </article>
     </section>
 

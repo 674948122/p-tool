@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: parseUtf8StringToHex.js</title>
+    <title>JSDoc: Source: getBrowserVersion.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: parseUtf8StringToHex.js</h1>
+    <h1 class="page-title">Source: getBrowserVersion.js</h1>
 
     
 
@@ -28,27 +28,54 @@
         <article>
             <pre class="prettyprint source linenums"><code>
 /**
- * @name: 普通字符串转16进制字符串
- * @param {String} t 需要转换的字符串
- * @return {String} 16进制字符串
+ * @name: 获取浏览器内核名称及版本号
+ * @return {Object} 浏览器内核名称及版本号
  * @example
- * parseUtf8StringToHex("你好hello") => "e4bda0e5a5bd68656c6c6f"
+ *  const browserVersion = getBrowserVersion();
+ *  console.log(browserVersion); // { name: 'Chrome', version: '87.0.0.0' }
  */
-function parseUtf8StringToHex(t) {
-    for (
-        var e = (t = unescape(encodeURIComponent(t))).length, r = [], n = 0;
-        n &lt; e;
-        n++
-    )
-        r[n >>> 2] |= (255 &amp; t.charCodeAt(n)) &lt;&lt; (24 - (n % 4) * 8);
-    for (var i = [], o = 0; o &lt; e; o++) {
-        var s = (r[o >>> 2] >>> (24 - (o % 4) * 8)) &amp; 255;
-        i.push((s >>> 4).toString(16)), i.push((15 &amp; s).toString(16));
+function getBrowserVersion() {
+    const ua = navigator.userAgent;
+    const userAgent = navigator.userAgent;
+    const isOpera = userAgent.indexOf("Opera") > -1;
+    if (isOpera) {
+        return {
+            name: "Opera",
+            version: userAgent.match(/Opera\/([\d.]+)/)[1],
+        };
+    } else if (ua.indexOf("Firefox") > -1) {
+        return {
+            name: "Firefox",
+            version: userAgent.match(/Firefox\/([\d.]+)/)[1],
+        };
+    } else if (ua.indexOf("Chrome") > -1) {
+        return {
+            name: "Chrome",
+            version: ua.match(/Chrome\/([\d.]+)/)[1],
+        };
+    } else if (ua.indexOf("Safari") > -1) {
+        return {
+            name: "Safari",
+            version: userAgent.match(/Safari\/([\d.]+)/)[1],
+        };
+    } else if (
+        ua.indexOf("compatible") > -1 &amp;&amp;
+        ua.indexOf("MSIE") > -1 &amp;&amp;
+        !isOpera
+    ) {
+        return {
+            name: "IE",
+            version: userAgent.match(/MSIE ([\d.]+)/)[1],
+        };
+    } else {
+        return {
+            name: "Other",
+            version: "",
+        };
     }
-    return i.join("").toUpperCase();
 }
 
-export default parseUtf8StringToHex;</code></pre>
+export default getBrowserVersion</code></pre>
         </article>
     </section>
 
