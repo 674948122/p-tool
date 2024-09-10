@@ -1,6 +1,6 @@
 {
   "name": "pdg-tool",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "pdg工具包",
   "main": "dist/index.esm.js",
   "type": "module",
